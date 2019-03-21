@@ -24,6 +24,16 @@ def showComputerIP():
 	except socket.error as err:
 		print("%s: %s" %(hostname, msg))
 
+def writeGeneralData(time, file, host, socket, bios):
+	file.write("***************************************************\n" + \
+		"-------------------General infos-------------------\n" + \
+		" Scan Type:\tGeneral system informations\n" + \
+		" Flashed at:\t" + time + "\n" + \
+		" PC name:\t[" + host.upper() + "]\n" + \
+		" IP address:\t[" + socket.gethostbyname(host) + "]\n" + \
+		"---------------------BIOS infos--------------------\n" + \
+		" Version:\t" + bios.Caption + "\n")
+
 def writeData(time, file, hostname, socket, diskCaption, diskDescription, diskFileSystem, size, freespace, usingspace, rndPercentageFree, rndPercentageUsing):
 	"""Function for write data in a data text file
 	

@@ -33,7 +33,7 @@ def displayMenu():
 		else:
 			print("[ERROR] ...")
 
+
 		userWantContinue = input("Again ? [Y/n] > ")
 		if userWantContinue != "Y" and userWantContinue != "y" and userWantContinue != "":
 			exit()
-

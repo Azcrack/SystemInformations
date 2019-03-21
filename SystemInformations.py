@@ -8,8 +8,8 @@
 # 	 > Type 'py SystemInformations.py'
 # ----------------------------------------------- #
 
-import wmi, socket
-from menu import displayMenu
+import wmi, socket, os
+#from menu import displayMenu
 from datetime import datetime
 from functions import *
 
@@ -20,6 +20,9 @@ c 			   = wmi.WMI() # Connecting to local machine
 currentTime	   = datetime.now().strftime("%d/%m/%Y @ %H:%M:%S")
 # Research infos system
 hostname 	   = socket.gethostname()
+# Get BIOS class
+bios = c.Win32_BIOS()[0]
+# Infos about Hard Drive
 logicalDisk    = c.Win32_LogicalDisk()[0]
 osName 		   = c.Win32_OperatingSystem()[0].Caption # get OS name
 ldFreespace    = logicalDisk.Freespace # get main disk freespace 
@@ -28,15 +31,46 @@ ldUsingspace   = int(ldSize) - int(ldFreespace) # get main disk using space
 percentageFreespace = 100.0 * int(ldFreespace) / int(ldSize)
 roundPercentageFreespace = round(percentageFreespace, 2)
 roundPercentageUsingSpace = round(100.0 - roundPercentageFreespace, 2)
-
+#print(bios.Manufacturer)
+#exit()
 # Display menu
 #displayMenu()
+clear = lambda: os.system("cls")
+while True:	
+	clear()
+	displayOperationAvailable()
+	userSelection = 0	
+	while not userSelection:
+		try:
+			userSelection = int(input("Choice operation > "))
+			if userSelection not in (1, 2, 3, 4):
+				userSelection = 0
+				raise ValueError
+		except ValueError:
+			print("[ERROR] Please enter a valid choice.")
+		#except KeyboardInterrupt:
+	#	print("Operation interrupted")
+	if userSelection == 1:
+		print("Collect general system informations...")
+		writeGeneralData(currentTime, fileToSaveData, hostname, socket, bios)
+	elif userSelection == 2:
+		print("Collect hard drive informations...")
+	elif userSelection == 3:
+		print("Collect all informations...")
+	elif userSelection == 4:
+		exit()
+	else:
+		print("[ERROR] ...")
 
-# Write data
-writeData(currentTime, fileToSaveData, hostname, socket, logicalDisk, logicalDisk, logicalDisk, ldSize, ldFreespace, ldUsingspace, roundPercentageFreespace, roundPercentageUsingSpace)
+	# Write data
+	#writeData(currentTime, fileToSaveData, hostname, socket, logicalDisk, logicalDisk, logicalDisk, ldSize, ldFreespace, ldUsingspace, roundPercentageFreespace, roundPercentageUsingSpace)
 
+	userWantContinue = input("Again ? [Y/n] > ")
+	if userWantContinue != "Y" and userWantContinue != "y" and userWantContinue != "":
+		exit()
 # Close file
 fileToSaveData.close()
+
 
 
 # #######################################################################

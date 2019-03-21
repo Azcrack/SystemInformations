@@ -1,0 +1,24 @@
+***************************************************
+-------------------General infos-------------------
+ Scan Type:	General system informations
+ Flashed at:	21/03/2019 @ 14:48:30
+ PC name:	[WRK-INFO-07]
+ IP address:	[192.168.40.62]
+---------------------BIOS infos--------------------
+ Characteristics:	HPQOEM - 20131217
+***************************************************
+-------------------General infos-------------------
+ Scan Type:	General system informations
+ Flashed at:	21/03/2019 @ 14:49:48
+ PC name:	[WRK-INFO-07]
+ IP address:	[192.168.40.62]
+---------------------BIOS infos--------------------
+ Characteristics:	L01 v02.21
+***************************************************
+-------------------General infos-------------------
+ Scan Type:	General system informations
+ Flashed at:	21/03/2019 @ 14:50:12
+ PC name:	[WRK-INFO-07]
+ IP address:	[192.168.40.62]
+---------------------BIOS infos--------------------
+ Version:	L01 v02.21
